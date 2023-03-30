@@ -1,4 +1,4 @@
-package com.kyle.restaurantExplorer;
+package com.restaurantExplorer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
