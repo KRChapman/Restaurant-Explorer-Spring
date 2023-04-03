@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.core.env.Environment;
@@ -82,7 +81,7 @@ public class JwtService {
 
   private Key getSignInKey() {
 	  String KEY = environment.getProperty("JWT_KEY");
-    byte[] keyBytes = Decoders.BASE64.decode(KEY); // SECRET_KEY
+    byte[] keyBytes = Decoders.BASE64.decode(KEY); 
 
     return Keys.hmacShaKeyFor(keyBytes);
   }
