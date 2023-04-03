@@ -15,12 +15,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-//public class User {
-//
-//}
 
 @Entity
-@Table(name = "_user") // Change name to not clash?
+@Table(name = "_user") 
 public class User implements UserDetails  {
 	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 	  @Id
@@ -32,7 +29,7 @@ public class User implements UserDetails  {
 	  private String password;
 
 	  public User(Integer id, String firstname, String lastname, String email, String password
-			  ,Role role) { //, Role role,	List<Token> tokens
+			  ,Role role) { 
 		super();
 		this.id = id;
 		this.firstname = firstname;
@@ -40,7 +37,7 @@ public class User implements UserDetails  {
 		this.email = email;
 		this.password = password;
 		this.role = role;
-//		this.tokens = tokens;
+
 	}
 	  public User() {
 		super();
@@ -49,9 +46,7 @@ public class User implements UserDetails  {
 	@Enumerated(EnumType.STRING)
 	  private Role role;
 
-//	  @OneToMany(mappedBy = "user")
-//	  private List<Token> tokens;
-//
+
 	  @Override
 	  public Collection<? extends GrantedAuthority> getAuthorities() {
 	    return List.of(new SimpleGrantedAuthority(role.name()));
@@ -126,13 +121,7 @@ public class User implements UserDetails  {
 //		this.role = role;
 //	}
 //
-//	public List<Token> getTokens() {
-//		return tokens;
-//	}
-//
-//	public void setTokens(List<Token> tokens) {
-//		this.tokens = tokens;
-//	}
+
 
 	public void setPassword(String password) {
 		this.password = password;
