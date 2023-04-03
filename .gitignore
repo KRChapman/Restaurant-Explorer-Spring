@@ -99,3 +99,6 @@ tmp/
 local.properties
 .loadpath
 .factorypath
+
+Authentication
+security
