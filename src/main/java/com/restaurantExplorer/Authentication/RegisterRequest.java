@@ -5,38 +5,25 @@ package com.restaurantexplorer.Authentication;
 
 public class RegisterRequest {
 
-  private String firstname;
-  private String lastname;
-  private String email;
+
+  private String username;
   private String password;
-public RegisterRequest(String firstname, String lastname, String email, String password) {
+public RegisterRequest( String username, String password) {
 	super();
-	this.firstname = firstname;
-	this.lastname = lastname;
-	this.email = email;
+
+	this.username = username;
 	this.password = password;
 }
 public RegisterRequest() {
 	super();
 
 }
-public String getFirstname() {
-	return firstname;
-}
-public void setFirstname(String firstname) {
-	this.firstname = firstname;
-}
-public String getLastname() {
-	return lastname;
-}
-public void setLastname(String lastname) {
-	this.lastname = lastname;
-}
-public String getEmail() {
-	return email;
+
+public String getUsername() {
+	return username;
 }
 public void setEmail(String email) {
-	this.email = email;
+	this.username = email;
 }
 public String getPassword() {
 	return password;
@@ -46,7 +33,7 @@ public void setPassword(String password) {
 }
 @Override
 public String toString() {
-	return "RegisterRequest [firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", password="
+	return "RegisterRequest [email=" + username + ", password="
 			+ password + "]";
 }
 

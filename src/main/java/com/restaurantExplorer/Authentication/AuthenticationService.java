@@ -35,28 +35,28 @@ private final UserRepository repository;
 	}
 
   public AuthenticationResponse register(RegisterRequest request) {//VALIDATION FOR UNIQUE?
-  var user = new User(null, request.getFirstname(), request.getLastname(), request.getEmail()
+  var user = new User(null,  request.getUsername()
 		  ,passwordEncoder.encode(request.getPassword()),Role.USER);
     		
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);
 
-    return new AuthenticationResponse(jwtToken);
+    return new AuthenticationResponse(jwtToken, request.getUsername());
 
   }
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
     authenticationManager.authenticate(
         new UsernamePasswordAuthenticationToken(
-            request.getEmail(),
+            request.getUsername(),
             request.getPassword()
         )
     );
-    var user = repository.findByEmail(request.getEmail())
+    var user = repository.findByUsername(request.getUsername())
         .orElseThrow();
     var jwtToken = jwtService.generateToken(user);
 
-    return new AuthenticationResponse(jwtToken);
+    return new AuthenticationResponse(jwtToken,  request.getUsername());
   }
 
 }

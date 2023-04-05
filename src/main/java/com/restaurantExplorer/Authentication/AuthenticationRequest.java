@@ -4,11 +4,11 @@ package com.restaurantexplorer.Authentication;
 
 public class AuthenticationRequest {
 
-  private String email;
+  private String username;
   private String password;
-	public AuthenticationRequest(String email, String password) {
+	public AuthenticationRequest(String username, String password) {
 		super();
-		this.email = email;
+		this.username = username;
 		this.password = password;
 	}
 	
@@ -16,12 +16,12 @@ public class AuthenticationRequest {
 	
 	}
 	
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsernamel(String username) {
+		this.username = username;
 	}
 	
 	public String getPassword() {
@@ -34,7 +34,7 @@ public class AuthenticationRequest {
 	
 	@Override
 	public String toString() {
-		return "AuthenticationRequest [email=" + email + ", password=" + password + "]";
+		return "AuthenticationRequest [email=" + username + ", password=" + password + "]";
 	}
   
   
