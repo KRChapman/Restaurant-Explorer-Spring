@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api")
-public class RestaurantResource {
+public class RestaurantController {
     
 
 	RestaurantService restaurantService;
 
-	public RestaurantResource(RestaurantService restaurantService) {
+	public RestaurantController(RestaurantService restaurantService) {
 		super();
 		this.restaurantService = restaurantService;
 	}

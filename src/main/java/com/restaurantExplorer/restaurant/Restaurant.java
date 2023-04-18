@@ -1,5 +1,10 @@
 package com.restaurantexplorer.restaurant;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -7,7 +12,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Restaurant {
 	@Id
-	int Id;
+	private int Id;
 	
 	private String googlePlaceId;
 	private String yelpPlaceId;
@@ -15,12 +20,28 @@ public class Restaurant {
 	
 	
 	
-	public Restaurant(int id, String googlePlaceId, String yelpPlaceId, String healthPlace) {
+	public Restaurant(String restaurantPLace) {
 		super();
-		Id = id;
-		this.googlePlaceId = googlePlaceId;
-		this.yelpPlaceId = yelpPlaceId;
-		this.healthPlace = healthPlace;
+		// use json/jackson to parse through String restaurantPLace and build
+		/// string reprsendations and get placeIds
+		//// if any proprty does not exists just return empty string 
+		try {
+			JsonNode restaurant = createRestaurantNode(restaurantPLace);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		Id = id;
+//		this.googlePlaceId = googlePlaceId;
+//		this.yelpPlaceId = yelpPlaceId;
+//		this.healthPlace = healthPlace;
+	}
+	
+	private JsonNode createRestaurantNode(String restaurantPLace) throws JsonMappingException, JsonProcessingException {
+	  	ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(restaurantPLace);
+     //   JsonNode quiz = jsonNode.get("quiz");
+		return null; // return json node
 	}
 
 	public int getId() {
