@@ -5,7 +5,7 @@ Live App: [Restaurant Exploring](https://restaurantexploring.com/)
 ![my-store-search](https://github.com/KRChapman/Restaurant-Explorer/blob/master/src/assets/img/demo.gif)
 # Contribution Guide
 
-Project has two parts. This repository is the front end and the [front end](https://github.com/KRChapman/Restaurant-Explorer) is located [here](https://github.com/KRChapman/Restaurant-Explorer).
+Project has two parts. This repository is the back end and the [front end](https://github.com/KRChapman/Restaurant-Explorer) is located [here](https://github.com/KRChapman/Restaurant-Explorer).
 
 The backend is for calling Yelp and Health Department APis and for using a database to allow user to save searches.
 The frontend in this repository handles the UI and Google Maps.
