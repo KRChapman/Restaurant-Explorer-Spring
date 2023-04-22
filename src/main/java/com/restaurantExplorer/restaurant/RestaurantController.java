@@ -42,7 +42,7 @@ public class RestaurantController {
 	@PostMapping("/users/{username}/restaurants")
 	public String createRestaurants(@PathVariable String username, @RequestBody String restaurant) {
 		System.out.println(restaurant);
-		return null;
+		return restaurant;
 	}
 	
 	@GetMapping("/restaurants")

@@ -40,7 +40,7 @@ public class Restaurant {
 	private JsonNode createRestaurantNode(String restaurantPLace) throws JsonMappingException, JsonProcessingException {
 	  	ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(restaurantPLace);
-     //   JsonNode quiz = jsonNode.get("quiz");
+       JsonNode quiz = jsonNode.get("quiz");
 		return null; // return json node
 	}
 
