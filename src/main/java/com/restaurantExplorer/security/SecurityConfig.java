@@ -32,7 +32,7 @@ public class SecurityConfig {
 	        .authorizeHttpRequests()
 	        .requestMatchers("/auth/**")
 	          .permitAll()
-	          .requestMatchers("/api/**")
+	          .requestMatchers("/api/**")// TESTING
 	          .permitAll()
 	          .requestMatchers(PathRequest.toH2Console()).permitAll()
 	        .anyRequest()
