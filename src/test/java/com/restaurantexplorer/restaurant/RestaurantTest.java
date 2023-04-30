@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class RestaurantTest {
 
 	@Test
-	void test() {
+	void testRestaurantCreationFromJson() {
 		
 	    String EXPECTED_STRING = "String Interpolation in Java with some Java examples.";
 	    String googlePlaceId = 	"ChIJweBJa11FwokR8pKQjOVu788";
