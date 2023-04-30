@@ -27,7 +27,7 @@ public class Restaurant {
 	public Restaurant(String restaurantPLace) {
 		super();
 
-		String googlePlace = "";
+		String googlePlaceId = "";
 		String yelpPlaceId = "";
 		String healthPlace = "";
 		JsonNode restaurant = null;
@@ -40,13 +40,14 @@ public class Restaurant {
 		}
 		
 		if(restaurant != null) {
-			googlePlace = restaurant.get("googlePlace").get("placeId").asText();
-			yelpPlaceId = restaurant.get("yelpPlace").get("placeId").asText();
-			healthPlace = restaurant.get("healthPlace").asText();
+			googlePlaceId = restaurant.get("googlePlace").get("placeId").asText();
+			yelpPlaceId = restaurant.get("yelpPlace").get("yelpId").asText();
+			healthPlace = restaurant.get("healthPlace").toString();
+			System.out.println(restaurant);
 		}
 		
 //		Id = id;
-		this.googlePlaceId = googlePlace;
+		this.googlePlaceId = googlePlaceId;
 		this.yelpPlaceId = yelpPlaceId;
 		this.healthPlace = healthPlace;
 	}
@@ -84,6 +85,12 @@ public class Restaurant {
 	}
 	public void setHealthPlace(String healthPlace) {
 		this.healthPlace = healthPlace;
+	}
+
+	@Override
+	public String toString() {
+		return "Restaurant [Id=" + Id + ", googlePlaceId=" + googlePlaceId + ", yelpPlaceId=" + yelpPlaceId
+				+ ", healthPlace=" + healthPlace + "]";
 	}
 
 

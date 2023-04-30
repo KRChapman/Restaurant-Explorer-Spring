@@ -1,4 +1,4 @@
-package com.kyle.restaurantExplorer;
+package com.restaurantexplorer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
