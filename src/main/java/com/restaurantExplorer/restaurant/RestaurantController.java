@@ -21,17 +21,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class RestaurantController {
     
 
-	RestaurantService restaurantService;
+	private RestaurantService restaurantService;
+	private RestaurantRepository restaruantRepository;
 
-	public RestaurantController(RestaurantService restaurantService) {
+	public RestaurantController(RestaurantService restaurantService, RestaurantRepository restaruantRepository) {
 		super();
 		this.restaurantService = restaurantService;
+		this.restaruantRepository = restaruantRepository;
 	}
 
 	@GetMapping("/users/{username}/restaurants")
 	public List<RestaurantDTO> getRestaurants(@PathVariable String username) {
-	
-	
+		System.out.println(username);
+	    // GET ALL FOR NOW BUT LATER DO BY USERNAME
+		 List<Restaurant> restaurant = restaruantRepository.findAll();
+		 restaurantService.getAllRestaurantsFromYelpGoogle(restaurant);
 		return 	null;
 				//new ResponseEntity<RestaurantDTO>(restaruant, HttpStatus.OK);
 		//	
@@ -42,9 +46,9 @@ public class RestaurantController {
 	@PostMapping("/users/{username}/restaurants")
 	public String createRestaurants(@PathVariable String username, @RequestBody String restaurantBody) {
 		
-	//	Restaurant restaurant = new Restaurant(restaurantBody);
+		Restaurant restaurant = new Restaurant(restaurantBody);
 		System.out.println(restaurantBody);
-		
+		restaruantRepository.save(restaurant);
 		return null;
 	}
 	
