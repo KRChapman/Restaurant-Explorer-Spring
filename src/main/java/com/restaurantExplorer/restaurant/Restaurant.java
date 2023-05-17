@@ -12,9 +12,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-//import org.hibernate.boot.model.;
-//import org.hibernate.cfg.annotations.;
-
 
 @Entity
 public class Restaurant {
@@ -24,7 +21,7 @@ public class Restaurant {
 	
 	private String googlePlaceId;
 	private String yelpPlaceId;
-	@Column(columnDefinition="varchar(65530)")
+	@Column(columnDefinition="varchar(65530)") 
 	private String healthPlace;
 	
 	
