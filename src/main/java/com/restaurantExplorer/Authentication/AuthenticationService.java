@@ -13,20 +13,17 @@ import org.springframework.stereotype.Service;
 @Service
 
 public class AuthenticationService {
-	
 
-private final UserRepository repository;
+	private final UserRepository repository;
 
+	private final PasswordEncoder passwordEncoder;
 
+	private final JwtService jwtService;
 
-  private final PasswordEncoder passwordEncoder;
+	private final AuthenticationManager authenticationManager;
 
-  private final JwtService jwtService;
-
-  private final AuthenticationManager authenticationManager;
-
-  public AuthenticationService(UserRepository repository, 
-			PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
+	public AuthenticationService(UserRepository repository, PasswordEncoder passwordEncoder, JwtService jwtService,
+			AuthenticationManager authenticationManager) {
 		super();
 		this.repository = repository;
 		this.passwordEncoder = passwordEncoder;
@@ -34,29 +31,29 @@ private final UserRepository repository;
 		this.authenticationManager = authenticationManager;
 	}
 
-  public AuthenticationResponse register(RegisterRequest request) {//VALIDATION FOR UNIQUE?
-  var user = new User(null,  request.getUsername()
-		  ,passwordEncoder.encode(request.getPassword()),Role.USER);
-    		
-    var savedUser = repository.save(user);
-    var jwtToken = jwtService.generateToken(user);
+	public AuthenticationResponse register(RegisterRequest request) {// VALIDATION FOR UNIQUE?
+		User user = new User(null, request.getUsername(), passwordEncoder.encode(request.getPassword()), Role.USER);
+		User savedUser = addUser(user);
+		String jwtToken = jwtService.generateToken(savedUser);
 
-    return new AuthenticationResponse(jwtToken, request.getUsername());
+		return new AuthenticationResponse(jwtToken, request.getUsername());
 
-  }
+	}
 
-  public AuthenticationResponse authenticate(AuthenticationRequest request) {
-    authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(
-            request.getUsername(),
-            request.getPassword()
-        )
-    );
-    var user = repository.findByUsername(request.getUsername())
-        .orElseThrow();
-    var jwtToken = jwtService.generateToken(user);
+	public User addUser(User user) {// VALIDATION FOR UNIQUE?
 
-    return new AuthenticationResponse(jwtToken,  request.getUsername());
-  }
+		// VALIDATION FOR UNIQUE User name/email?
+		User savedUser = repository.save(user);
+		return savedUser;
+	}
+
+	public AuthenticationResponse authenticate(AuthenticationRequest request) {
+		authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+		User user = repository.findByUsername(request.getUsername()).orElseThrow();
+		String jwtToken = jwtService.generateToken(user);
+
+		return new AuthenticationResponse(jwtToken, request.getUsername());
+	}
 
 }
