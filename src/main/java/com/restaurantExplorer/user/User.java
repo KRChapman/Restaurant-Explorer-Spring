@@ -8,16 +8,20 @@ import org.springframework.security.core.SpringSecurityCoreVersion;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.restaurantexplorer.restaurant.Restaurant;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name = "_user") 
+@Table(name = "users") 
 public class User implements UserDetails  {
 	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 	  @Id
@@ -26,6 +30,10 @@ public class User implements UserDetails  {
 
 	  private String username;
 	  private String password;
+	  
+	//	@OneToMany( mappedBy = "user")
+
+	//	private List<Restaurant> Restaurants; // Select * From Post where USER_ID = 10001
 
 	  public User(Integer id,String username, String password
 			  ,Role role) { 

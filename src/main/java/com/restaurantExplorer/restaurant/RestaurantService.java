@@ -25,22 +25,13 @@ public class RestaurantService {
 	
 	public List<RestaurantDTO> getAllRestaurantsFromYelpGoogle(List<Restaurant> restaurants) {
 		String yelp = "https://api.yelp.com/v3/businesses/";
-		CompletableFuture<String> completableFutureResultObj2 = getAllGoogleData().thenApply(data -> data);
+	//	CompletableFuture<String> completableFutureResultObj2 = getAllGoogleData().thenApply(data -> data);
 		return null;
 	}
 
-	public CompletableFuture<String> getAllGoogleData() {
+	public CompletableFuture<String> getAllGoogleData(String id) {
+		return CompletableFuture.supplyAsync(() ->  getGoogleData(id));
 
-		return CompletableFuture.supplyAsync(() -> {
-			try {
-				TimeUnit.SECONDS.sleep(3);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-			return null;
-
-		});
 	}
 
 	public String getGoogleData(String id) {

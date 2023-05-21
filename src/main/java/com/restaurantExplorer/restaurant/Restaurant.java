@@ -2,15 +2,19 @@ package com.restaurantexplorer.restaurant;
 
 import java.io.IOException;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.restaurantexplorer.user.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 
 @Entity
@@ -24,7 +28,8 @@ public class Restaurant {
 	@Column(columnDefinition="varchar(65530)") 
 	private String healthPlace;
 	
-	
+//	@ManyToOne(fetch = FetchType.LAZY)	
+//	private User user;
 	
 	public Restaurant(String restaurantPLace) {
 		super();

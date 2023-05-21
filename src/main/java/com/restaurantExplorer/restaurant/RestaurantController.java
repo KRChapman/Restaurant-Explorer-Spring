@@ -43,13 +43,13 @@ public class RestaurantController {
 		
 	}
 	
-	@PostMapping("/users/{username}/restaurants")
+	@PostMapping("/users/{username}/restaurants")// RETURN SUCESS MESSAGE RESOONSE?
 	public String createRestaurants(@PathVariable String username, @RequestBody String restaurantBody) {
 		
 		Restaurant restaurant = new Restaurant(restaurantBody);
 		System.out.println(restaurantBody);
 		restaruantRepository.save(restaurant);
-		return null;
+		return null;// RETURN SUCESS MESSAGE RESOONSE?
 	}
 	
 	@GetMapping("/restaurants")
